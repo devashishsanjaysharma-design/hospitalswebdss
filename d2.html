@@ -7,7 +7,7 @@
     <!-- Fixed: Font Awesome CDN updated to v6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        .floating-widget-container {
+        .popup-container {
             position: fixed;
             right: 0;
             top: 25%;
@@ -17,7 +17,7 @@
             font-family: sans-serif;
         }
 
-        .widget-tabs {
+        .tabs {
             display: flex;
             flex-direction: column;
             box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.15);
@@ -25,7 +25,7 @@
             z-index: 2;
         }
 
-        .tab-label-red {
+        .red {
             background: #c47a00;
             color: #ffffff;
             padding: 14px 16px;
@@ -38,11 +38,11 @@
             justify-content: center;
         }
 
-        .tab-label-red i {
+        .red i {
             color: #ffffff;
         }
 
-        .enquiry-form-popup {
+        .enquiry-popup {
             background: #c47a00;
             color: #ffffff;
             border-bottom-left-radius: 4px;
@@ -60,7 +60,7 @@
             top: 0;
         }
 
-        .floating-widget-container.active .enquiry-form-popup {
+        .popup-container.active .enquiry-popup {
             transform: translateX(0);
             opacity: 1;
             pointer-events: auto;
@@ -114,8 +114,8 @@
     </style>
 </head>
 <body>
-    <div class="floating-widget-container" id="floatingWidget">
-        <div class="enquiry-form-popup">
+    <div class="popup-container" id="popupContainer">
+        <div class="enquiry-popup">
             <h2 class="popup-title">What is your position?</h2>
             <p class="popup-description">Please select your current role or position.</p>
             <button class="popup-button" onclick="window.location.href='https://www.example.com/doctor'">Doctor</button>
@@ -123,17 +123,17 @@
             <button class="popup-button" onclick="window.location.href='https://www.example.com/administrator'">Administrator</button>
             <button class="popup-button" onclick="window.location.href='https://www.example.com/other'">Other</button>
         </div>
-        <div class="widget-tabs" id="widgetToggle">
-            <div class="tab-label-red"><i class="fa-solid fa-user"></i></div>
+        <div class="widget" id="Toggle">
+            <div class="red"><i class="fa-solid fa-user"></i></div>
         </div>
     </div>
 
     <script>
-        const floatingWidget = document.getElementById('floatingWidget');
-        const widgetToggle = document.getElementById('widgetToggle');
+        const popupContainer = document.getElementById('popupContainer');
+        const widgetToggle = document.getElementById('Toggle');
 
         widgetToggle.addEventListener('click', () => {
-            floatingWidget.classList.toggle('active');
+            popupContainer.classList.toggle('active');
         });
     </script>
 </body>
