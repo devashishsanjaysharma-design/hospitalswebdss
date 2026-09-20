@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery with Wide Spacing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href=" drthyu.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        /* बॉडी के लिए कुछ बेसिक स्टाइल ताकि फ़ूटर नीचे दिखे */
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* पेज की पूरी ऊंचाई ले */
+        }
+
+        main {
+            flex-grow: 1;
+            /* मुख्य सामग्री फ़ूटर को नीचे धकेल दे */
+            padding: 20px;
+        }
+
+        /* फ़ूटर के लिए स्टाइल */
+        footer {
+            background: #DAA52021;
+            /* गहरा नीला/ग्रे बैकग्राउंड */
+            color: black;
+            /* हल्का टेक्स्ट रंग */
+            padding: 40px 20px;
+            /* ऊपर/नीचे और दाएं/बाएं पैडिंग */
+            font-size: 1rem;
+            /* डिफ़ॉल्ट फ़ॉन्ट साइज़ */
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            /* कंटेनर की अधिकतम चौड़ाई */
+            margin: 0 auto;
+            /* कंटेनर को बीच में करें */
+            display: flex;
+            /* फ़्लेक्सबॉक्स लेआउट सक्षम करें */
+            flex-wrap: wrap;
+            /* अगर जगह कम हो तो आइटम अगली लाइन में आ जाएं */
+            justify-content: space-between;
+            /* आइटम्स के बीच स्पेस दें */
+            gap: 30px;
+            /* आइटम्स के बीच गैप */
+        }
+
+        .footer-section {
+            flex: 9;
+            /* प्रत्येक सेक्शन को बराबर जगह लेने दें */
+            min-width: 60px;
+            /* सेक्शन की न्यूनतम चौड़ाई ताकि छोटी स्क्रीन पर रैप हो सकें */
+            margin-bottom: 20px;
+            /* मोबाइल पर स्टैक्ड होने पर नीचे मार्जिन */
+        }
+
+        .footer-section h2 {
+            color: #3498db;
+            /* शीर्षक का रंग */
+            margin-bottom: 20px;
+            /* शीर्षक के नीचे मार्जिन */
+            font-size: 1.3rem;
+            /* शीर्षक का फ़ॉन्ट साइज़ */
+            position: relative;
+            /* अंडरलाइन इफ़ेक्ट के लिए */
+        }
+
+        /* शीर्षक के नीचे सरल अंडरलाइन */
+        .footer-section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            /* अंडरलाइन की चौड़ाई */
+            height: 3px;
+            /* अंडरline की ऊंचाई */
+            background-color: #3498db;
+            /* अंडरलाइन का रंग */
+            margin-top: 10px;
+        }
+
+
+        .footer-section p {
+            margin-bottom: 10px;
+            /* पैराग्राफ़ के नीचे मार्जिन */
+            line-height: 1.8;
+            /* लाइन स्पेसिंग */
+        }
+
+        .footer-section ul {
+            list-style: none;
+            /* लिस्ट स्टाइल हटाएँ */
+            padding: 0;
+            /* डिफ़ॉल्ट पैडिंग हटाएँ */
+            margin: 0;
+            /* डिफ़ॉल्ट मार्जिन हटाएँ */
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+            /* लिस्ट आइटम के नीचे मार्gin */
+        }
+
+        .footer-section ul li a {
+            color: black;
+            /* लिंक का रंग */
+            text-decoration: none;
+            /* अंडरलाइन हटाएँ */
+            transition: color 0.3s ease;
+            /* होवर पर स्मूथ ट्रांजिशन */
+        }
+
+        .footer-section a:hover {
+            color: #34495e;
+            /* होवर पर लिंक का रंग बदलें */
+        }
+
+        /* सोशल मीडिया लिंक स्टाइल */
+        .social-links a {
+            display: inline-block;
+            /* ताकि मार्जिन/पैडिंग लागू हो */
+            color: black;
+            /* आइकॉन का रंग */
+            font-size: 1.5rem;
+            /* आइकॉन का साइज़ */
+            margin-right: 15px;
+            /* आइकॉन के बीच स्पेस */
+            transition: color 0.3s ease;
+            /* होवर पर स्मूथ ट्रांजिशन */
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+            /* होवर पर आइकॉन का रंग बदलें */
+        }
+
+        /* संपर्क जानकारी के आइकॉन के लिए */
+        .footer-section.contact p i {
+            margin-right: 10px;
+            /* आइकॉन और टेक्स्ट के बीच स्पेस */
+            color: #3498db;
+            /* आइकॉन का रंग */
+        }
+
+        .footer-section.contact img {
+            top: 32%;
+            left: 20px;
+            /* आइकॉन का रंग */
+        }
+
+        .footer-bottom {
+            text-align: center;
+            /* टेक्स्ट को बीच में करें */
+            margin-top: 30px;
+            /* कॉपीराइट सेक्शन के ऊपर मार्जिन */
+            padding-top: 20px;
+            /* ऊपर पैडिंग */
+            border-top: 1px solid #34495e;
+            /* ऊपर एक पतली बॉर्डर */
+            font-size: 0.9rem;
+            /* फ़ॉन्ट साइज़ थोड़ा छोटा करें */
+            color: black;
+            /* टेक्स्ट का रंग थोड़ा हल्का करें */
+        }
+
+        /* मीडिया क्वेरीज़ फॉर रिस्पॉन्सिवनेस */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                /* छोटी स्क्रीन पर कॉलम में स्टैक करें */
+                align-items: center;
+                /* आइटम्स को बीच में करें */
+            }
+
+            .footer-section {
+                min-width: 90%;
+                /* सेक्शन को चौड़ाई का ज़्यादा हिस्सा दें */
+                text-align: center;
+                /* टेक्स्ट को बीच में करें */
+            }
+
+            .footer-section h2::after {
+                margin: 10px auto 0;
+                /* अंडरलाइन को बीच में करें */
+            }
+
+            .social-links {
+                text-align: center;
+                /* सोशल लिंक को बीच में करें */
+            }
+
+            .footer-section.contact p {
+                text-align: center;
+                /* संपर्क टेक्स्ट को बीच में करें */
+            }
+
+            .footer-section.contact p i {
+                margin-right: 5px;
+                /* छोटी स्क्रीन पर आइकॉन और टेक्स्ट के बीच कम स्पेस */
+                margin-left: 5px;
+                /* आइकॉन को बीच में करने के लिए मार्जिन */
+            }
+        }
+
+        /* style.css फ़ाइल में मौजूदा स्टाइल के साथ जोड़ें */
+
+        /* ऐप लिंक सेक्शन के लिए स्टाइल (मौजूदा footer-section स्टाइल जैसा) */
+        .footer-section.app-links {
+            flex: 6;
+            /* Flex आइटम के रूप में व्यवहार करें */
+            min-width: 200px;
+            /* इस सेक्शन की न्यूनतम चौड़ाई */
+            margin-bottom: 20px;
+            /* मोबाइल पर स्टैक्ड होने पर मार्जिन */
+        }
+
+        /* लोगो के कंटेनर के लिए (वैकल्पिक, लेआउट के लिए फ्लेक्सबॉक्स का उपयोग कर सकते हैं) */
+        .app-store-logos {
+            display: flex;
+            /* लोगो को एक लाइन में रखने के लिए */
+            align-items: center;
+            /* लोगो को वर्टिकली बीच में करें */
+            flex-wrap: wrap;
+            /* अगर जगह कम हो तो अगली लाइन में ले जाएं */
+            gap: 15px;
+            /* लोगो के बीच गैप (नया CSS फीचर, ब्राउज़र सपोर्ट देखें) */
+            /* Alternative to gap: use margin-right on images */
+        }
+
+        /* ऐप स्टोर लोगो इमेजेस के लिए स्टाइल */
+        .app-store-logos img {
+            max-width: 120px;
+            /* लोगो की अधिकतम चौड़ाई सेट करें */
+            height: auto;
+            /* ऊंचाई ऑटोमेटिकली एडजस्ट होगी ताकि अनुपात (aspect ratio) सही रहे */
+            display: block;
+            /* ब्लॉक एलिमेंट ताकि साइज़ और मार्जिन ठीक से काम करें */
+            /* If not using gap on .app-store-logos, use margin-right */
+            /* margin-right: 15px; */
+        }
+
+        /* अगर आप margin-right उपयोग कर रहे हैं, तो आखिरी इमेज का मार्जिन हटा दें */
+        /* .app-store-logos img:last-child {
+    margin-right: 0;
+} */
+
+        /* लोगो पर होवर इफ़ेक्ट (वैकल्पिक) */
+        .app-store-logos img:hover {
+            opacity: 0.8;
+            /* होवर करने पर थोड़ा पारदर्शी करें */
+        }
+
+
+        /* मीडिया क्वेरी में एडजस्टमेंट (छोटी स्क्रीन के लिए) */
+        @media (max-width: 768px) {
+            .footer-section.app-links {
+                text-align: center;
+                /* छोटी स्क्रीन पर टेक्स्ट को बीच में करें */
+                min-width: 90%;
+                /* छोटी स्क्रीन पर ज़्यादा चौड़ाई ले */
+            }
+
+            .app-store-logos {
+                justify-content: center;
+                /* छोटी स्क्रीन पर लोगो को बीच में करें */
+                /* If using margin-right instead of gap, adjust or remove margins here */
+                /* margin-right: 10px; */
+            }
+
+            /* If using margin-right, maybe center manually */
+            /* .app-store-logos img {
+         margin: 0 5px 10px; /* ऊपर/नीचे 10px, दाएं/बाएं 5px */
+            /* } */
+        }
+
+        nav div a {
+            margin-right: 20px;
+            /* लिंक के बीच स्पेस */
+            text-decoration: none;
+            color: black;
+        }
+
+        /* style.css में .footer-section.links ul और .footer-section.links ul li के लिए स्टाइल */
+
+        .footer-section.links {
+            list-style: none;
+            /* बुलेट पॉइंट्स हटाता है */
+            padding: 0;
+            /* डिफ़ॉल्ट पैडिंग हटाता है */
+            margin: 0;
+            /* डिफ़ॉल्ट मार्जिन हटाता है */
+            /* यहाँ कोई ऐसा डिस्प्ले सेट नहीं है जो li को हॉरिजॉन्टल करे */
+        }
+
+        .footer-section.links {
+            margin-bottom: 10px;
+            /* प्रत्येक लिस्ट आइटम के नीचे थोड़ी जगह */
+            /* अगर वे हॉरिजॉन्टल हो रहे हैं तो इसे जोड़ें (हालांकि यह डिफ़ॉल्ट है): */
+            /* display: list-item;  */
+            /* या आप display: block; का भी उपयोग कर सकते हैं */
+        }
+
+        .footer-section.links a {
+            /* लिंक की स्टाइलिंग (रंग, अंडरलाइन हटाना, आदि) */
+            color: black;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            /* अगर आप चाहते हैं कि लिंक पूरे li की चौड़ाई ले ताकि कहीं भी क्लिक करने पर काम करे: */
+            /* display: block; */
+        }
+
+        .left-tot,
+        img {
+            left: 98px;
+            top: 56%;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-container0 {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .input-container {
+                width: 90%;
+                max-width: none;
+            }
+
+            .image-container1,
+            .image-container2 {
+                margin-bottom: 15px;
+            }
+
+            .image-container1 .main-img,
+            .image-container2 .main-img2 {
+                width: 100px;
+            }
+
+            .fty ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .fty ul li {
+                padding: 8px 10px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .Devashish,
+            .sanjay,
+            .gt,
+            .de {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                background-color: transparent;
+                text-align: center;
+            }
+
+            .Devashish ul,
+            .sanjay ul,
+            .gt ul,
+            .de ul {
+                padding-left: 20px;
+            }
+
+            .icon-item {
+                flex: 1 1 calc(50% - 40px);
+            }
+
+            .container .box {
+                flex: 1 1 calc(100% - 30px);
+            }
+
+            .gallery-container {
+                flex-direction: column;
+            }
+
+            .large-image-left,
+            .large-image-right,
+            .center-thumbnails {
+                width: 100%;
+                max-width: none;
+            }
+
+            .thumbnail-row img {
+                width: calc(50% - 5px);
+            }
+
+            .image-gallery img {
+                flex: 1 1 calc(50% - 40px);
+            }
+
+            .medals-container .medal-container {
+                flex: 1 1 calc(50% - 60px);
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-container>div {
+                min-width: 90%;
+                text-align: center;
+            }
+
+            .footer-section h2::after {
+                margin: 10px auto 0;
+            }
+
+            .social-links {
+                text-align: center;
+            }
+
+            .footer-section.contact p {
+                text-align: center;
+            }
+
+            .footer-section.contact p i {
+                margin-right: 5px;
+                margin-left: 5px;
+            }
+
+            .app-store-logos {
+                justify-content: center;
+            }
+        }
+
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+    font-family: sans-serif;
+    /* Optional */
+  text-align: center;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.orange-string {
+    background-color: orange;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    text-align: right;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.icons {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.icons img {
+    width: 40px;
+    height: 40px;
+    margin: 0 15px;
+}
+
+.imgl {
+    height: 24px;
+    margin: 0 8px;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    /* Adjust icon size */
+    height: 20px;
+    /* Adjust icon size */
+}
+.main-img{
+    width: 100%;
+}
+.main-img2{
+    width: 119px;
+}
+.imgr {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    /* Adjust icon size */
+    height: 20px;
+    /* Adjust icon size */
+}
+
+.input-container {
+    position: relative;
+    width: 60%;
+    margin-bottom: 30px;
+}
+
+input[type="text"] {
+    padding: 15px 40px;
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 761px;
+    top: 52%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    opacity: 0.7;
+}
+/* de0 */
+.image-slider-container {
+    width: 500%;
+    max-width: 100%;
+    height: 100%;
+    /* Adjust as needed */
+    overflow: hidden;
+    margin-bottom: 30px;
+    position: relative;
+    /* For absolute positioning of text */
+  
+}
+
+.image-slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+    top: 40%;
+}
+
+.image-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 39%;
+
+}
+
+.slider-text-overlay {
+    position: absolute;
+    top: 10px;
+    /* Adjust as needed */
+    left: 10px;
+    /* Adjust as needed */
+    color: black;
+    /* Set text color */
+    font-size: 24px;
+    /* Set text size */
+    font-weight: bold;
+    /* Make text bold */
+    z-index: 10;
+    /* Ensure text is above the images */
+    padding: 10px;
+    /* Optional padding */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Optional background */
+    border-radius: 5px;
+    /* Optional */
+}
+a{
+    color: black; /* आप अपनी पसंद का कोई भी रंग यहाँ लिख सकते हैं */
+  text-decoration: none; /* यह अंडरलाइन हटाने के लिए है, अगर आप चाहें तो */
+}
+.Devashish ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    position: relative;
+    width: 200%;
+}
+
+ul {
+    text-align: center;
+    background-color: white;
+    cursor: pointer;
+    padding: 10px;
+margin: 0;
+}
+
+li {
+    z-index: 1;
+    position: relative;
+
+    display: inline-block;
+    padding: 10px;
+}
+
+ul li {
+    z-index: 1;
+    position: relative;
+
+    display: inline-block;
+    padding: 10px;
+}
+
+ul li:hover {
+
+    color: black;
+    padding-left: 20px;
+    transition: 25ms;
+}
+
+.Devashish {
+    display: none;
+}
+
+ul li:hover .Devashish {
+    display: block;
+    position: absolute;
+    margin-left: 0.29cm;
+    margin-top: 0.27cm;
+    text-align: center;
+}
+
+.Devashish ul {
+    margin: 0;
+
+}
+
+.Devashish ul li {
+    display: block;
+}
+
+.sanjay {
+    display: none;
+}
+
+.Devashish ul li:hover .sanjay {
+    display: block;
+    position: absolute;
+    margin-left: .5cm;
+    margin-top: .25cm;
+
+}
+
+.gt ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.gt ul {
+    margin: 0;
+
+}
+
+.gt ul li {
+    display: block;
+
+}
+
+.de ul {
+    margin: 0;
+
+}
+
+.de ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.de ul li {
+    display: block;
+}
+
+.gt {
+    display: none;
+}
+
+ul li:hover .gt {
+    display: block;
+    position: absolute;
+    margin-left: 0.29cm;
+    margin-top: 0.27cm;
+
+}
+
+.de {
+    display: none;
+}
+
+ul li:hover .de {
+    display: block;
+    position: absolute;
+    margin-left: 0.29cm;
+    margin-top: 0.27cm;
+
+}
+
+ul li,
+ul li {
+
+    padding: 10px;
+}
+
+
+.icon-row {
+    display: flex;
+    justify-content: space-around;
+    /* Distribute icons evenly */
+   
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-item img {
+    
+    display: flex;
+   
+    justify-content: space-around;
+    /* Distribute icons evenly */
+    width: 35%;
+    /* Adjust width as needed */
+    margin-bottom: 20px;
+    padding: 10px;
+    
+}
+
+.icon-item span {
+    font-size: 14px;
+    /* Adjust text size */
+    color: #333;
+    /* Adjust text color */
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    /* Enable flex container */
+    justify-content: space-around;
+    /* Distribute boxes evenly */
+    width: 80%;
+    /* Adjust container width as needed */
+    margin: 0 auto;
+    /* Center the container */
+    padding: 20px;
+    /* Optional padding for the container */
+    background-color: #f0f0f0;
+    /* Optional background for the container */
+}
+
+.box {
+    border: 1px solid #ccc;
+    /* Border for each box */
+    padding: 15px;
+    /* Padding inside each box */
+    margin: 10px;
+    /* Margin around each box */
+    text-align: center;
+    /* Center content within each box */
+    flex: 1;
+    /* Allow boxes to grow and shrink equally */
+    min-width: 200px;
+    /* Minimum width for each box */
+}
+
+.box img {
+    max-width: 100%;
+    /* Image takes full width of the box */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.box .image-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.box p {
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+    /* Align longer paragraphs to the left */
+}
+.image-container1 {
+    margin-right: 180px;
+    /* Center the gallery */
+    /* align-items: flex-start;
+    /* Align items from the top */
+    /* display: flex;
+    justify-content: space-around; */
+    
+}
+.image-container2 {
+    margin-left: 108px;
+    /* Center the gallery */
+    /* align-items: flex-start;
+    /* Align items from the top */
+    /* display: flex;
+    justify-content: space-around; */
+    
+}
+.gallery-container0 {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px auto;
+    /* Center the gallery */
+    /* align-items: flex-start;
+    /* Align items from the top 
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 20px auto;
+    width: 1342px;
+    height: 96px; */
+}
+
+.large-image-left {
+    flex: 1;
+    /* Take up available space */
+    margin-right: 20px;
+    /* Space between left large image and center thumbnails */
+}
+
+.large-image-right {
+    flex: 1;
+    /* Take up available space */
+    margin-left: 20px;
+    /* Space between right large image and center thumbnails */
+}
+
+.large-image {
+    width: 100%;
+    height: auto;
+    /* Maintain aspect ratio */
+    border: 1px solid #ccc;
+    object-fit: contain;
+    /* Fit image within its container */
+    max-height: 500px;
+    /* Adjust as needed */
+}
+
+.center-thumbnails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center thumbnails horizontally */
+    justify-content: space-around;
+    /* Distribute space vertically */
+    height: 500px;
+    /* Make the center container as tall as the large images (adjust as needed) */
+}
+
+.thumbnail-row {
+    display: flex;
+    width: 100%;
+    /* Make the thumbnail row take full width */
+    justify-content: space-around;
+    /* Space out the thumbnails in the row */
+}
+
+.thumbnail-row img {
+    width: auto;
+    /* Adjust width automatically based on height */
+    height: auto;
+    /* Adjust height automatically based on width */
+    max-width: 150px;
+    /* Maximum width for thumbnails */
+    max-height: 200px;
+    /* Maximum height for thumbnails (making them longer) */
+    border: 1px solid #ccc;
+    object-fit: contain;
+    /* Maintain aspect ratio within bounds */
+}
+
+.image-gallery {
+    display: flex;
+    /* Enable flex container */
+    justify-content: space-around;
+    /* Distribute images evenly */
+    width: 80%;
+    /* Adjust the width of the gallery as needed */
+    margin: 20px auto;
+    /* Center the gallery on the page */
+}
+
+.image-gallery img {
+    width: 20%;
+    /* Each image takes up approximately 20% of the container width */
+    height: auto;
+    /* Maintain the aspect ratio of the images */
+    border: 1px solid #ccc;
+    /* Optional: Add a border around the images */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+}
+
+.medals-container {
+    display: flex;
+    /* Enable flex container */
+    justify-content: space-around;
+    /* Distribute medals evenly */
+    width: 80%;
+    /* Adjust the width of the container as needed */
+    margin: 20px auto;
+    /* Center the container on the page */
+}
+
+.medal-container {
+    width: 150px;
+    /* Adjust the size of the medal */
+    height: 150px;
+    /* Adjust the size of the medal */
+    border-radius: 50%;
+    background-color: gold;
+    border: 5px solid #d4af37;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /* Optional shadow */
+    text-align: center;
+}
+
+.medal-inner {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 50%;
+    background-color: #f8f8f8;
+    /* Lighter background for the inner circle */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.statistic-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.statistic-label {
+    font-size: 0.9em;
+}
+
+.orange {
+    background-color: orange;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    }
+
+.gallery-container {
+    display: flex;
+    /* Enable flex container */
+    justify-content: space-around;
+    /* Distribute images with equal space around them */
+    width: 80%;
+    /* Adjust the width of the gallery as needed */
+    margin: 20px auto;
+    /* Center the gallery on the page */
+}
+
+.image-container img {
+    max-width: 100%;
+    /* Ensure images don't exceed their container width */
+    height: auto;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  .topnav .icon {
+    display: none;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+   .card-container {
+      display: flex;
+      width: 580px;
+      height: 125px;
+      background-color: #ffffff;
+      border-radius: 18px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      overflow: hidden;
+    }
+
+    /* Left Section - Enquiries */
+    .left-section {
+      flex: 1;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #ffffff;
+    }
+
+    .left-section .sub-title {
+      color: #0088cc;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+      margin-right: 53px;
+    }
+
+    .left-section .phone-number {
+      color: #1e293b;
+      font-size: 31px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    /* Right Section - Appointment Button */
+    .right-section {
+      flex: 1;
+      background-color: #006699;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .right-section:hover {
+      background-color: #005580;
+    }
+
+    .right-section .sub-title {
+      color: #7fbeee;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+      margin-right: 123px;
+    }
+
+    .right-section .main-title {
+      color: #ffffff;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    </style>
+</head>
+
+<body>
+
+    <!-- <div class="orange-string"> <i class="fa fa-phone" aria-hidden="true"></i>+91-2532461856 / 2462939
+        <i class="fa-brands fa-whatsapp"></i> +91-7774084019
+    </div> -->
+    <div class="gallery-container0">
+        <div class="image-container1">
+            <!-- <img src="C:\Users\win3\Desktop\imp of html old wd,dss\logo2.o.png" alt="Image 1" class="main-img"> -->
+            <img  src="https://ssvmshospitals.com/wp-content/uploads/2021/10/ssvmshnabh120.png" alt="Image 1" class="main-img">
+        </div>
+        <!-- <div class="input-container">
+            <input type="text" placeholder="Search...">
+            <img src="C:\Users\win3\Desktop\imp of html old wd,dss\15440-200.png" alt="Search Icon" class="search-icon">
+        </div> -->
+
+
+        <div class="image-container2">
+           <div class="card-container">
+    <div class="left-section">
+      <div class="sub-title">GENERAL ENQUIRIES</div>
+      <div class="phone-number">07422-490333</div>
+    </div>
+    <div class="right-section">
+      <div class="sub-title">BOOK AN</div>
+      <div class="main-title">Appointment</div>
+    </div>
+  </div>
+        </div>
+    </div>
+
+
+    <!-- <section class="oui">
+        <div>
+            <div class="fty" id="fty">
+                <ul>
+                    <a href="http://">
+                        <li>Home</li>
+                    </a>
+                    <a href="http://">
+                        <li>Shop
+                    </a>
+                    <div class="Devashish">
+
+                        <ul>
+                            <li>All products</li>
+                            <li>shop by category
+                                <div class="sanjay">
+
+                                    <ul>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+
+                            </li>
+                            <li>Shop by gender </li>
+                            <li>Shop by collection </li>
+                            <li>Shop by occasion </li>
+                            <li>Shop by products type</li>
+                        </ul>
+                    </div>
+                    </li>
+                    <a href="file:///C:/Users/My%20Pc/Desktop/Message%20Sender/main-html.html#">
+                        <li>loyaity program</li>
+                    </a>
+                    <a href="file:///C:/Users/My%20Pc/Desktop/Message%20Sender/vido.htm#">
+                        <li>museum</li>
+                    </a>
+                    <a href="http://">
+                        <li>saving</li>
+                    </a>
+                    <a href="http://">
+                        <li>Today's rate
+                    </a>
+                    <div class="gt">
+                        <ul>
+
+                            <li>Gold</li>
+                            <li>Silver</li>
+                            <li>Platinum</li>
+                        </ul>
+                    </div>
+
+                    <a href="http://">
+                        <li>About us
+                    </a>
+                    <div class="de">
+                        <ul>
+                            <li>Our Story</li>
+                            <li>career</li>
+                            <li> csr</li>
+                            <li>tems conditon</li>
+                            <li>privacy policies</li>
+                        </ul>
+                    </div>
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+    <section>
+        <div class="image-slider-container">
+            <div class="image-slider">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\OS_37.png" alt="Large Image 1">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\OS_42.png" alt="Large Image 2">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\OS_55.png" alt="Large Image 3">
+            </div>
+        </div>
+        <br><br> -->
+        <!-- <h1>Our Strength</h1>
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\hr.png" alt="">
+        <br><br>
+        <div class="icon-row">
+            <div class="icon-item">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\c.png" alt="Icon 1">
+                <span>Experienced staff</span>
+            </div>
+            <br><br>
+            <div class="icon-item">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\g.png" alt="Icon 2">
+                <span>Exclusive Designs</span>
+            </div>
+            <br><br>
+            <div class="icon-item">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\e.png" alt="Icon 3">
+                <span>Complete Transparency</span>
+            </div>
+            <br><br>
+            <div class="icon-item">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\a.png" alt="Icon 4">
+                <span>Lifetime Buyback</span>
+            </div>
+            <br><br>
+            <div class="icon-item">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\b.png" alt="Icon 5">
+                <span>Best Loyalty
+                    Programme</span>
+            </div>
+            <br><br>
+            <div class="icon-item">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\d.png" alt="Icon 6">
+                <span>0% Deduction on
+                    Exchange</span>
+            </div>
+            <br><br>
+            <div class="icon-item">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\f.png" alt="Icon 7">
+                <span>100% HUID & Hallmarked
+                    Jewellery</span>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h1>Featured Collections</h1>
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\hr.png" alt="" srcset="">
+        <div class="container">
+            <div class="box">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\17224925921.png" alt="Image 1">
+                <div class="image-label">TURKISH JEWELRY</div>
+                <p>Turkey Jewellery Collection, a refined blend of cultural heritage and modern design. Each
+                    meticulously
+                    handcrafted piece draws inspiration from the intricate patterns and vibrant colors of Turkish
+                    artistry.
+                    From bold statement necklaces to elegantly understated earrings, our collection offers style.</p>
+            </div>
+            <div class="box">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\17263236611.jpg" alt="Image 2">
+                <div class="image-label">AANVI COLLECTION</div>
+                <p>The Aanvi Collection features elegant 92.5 silver jewellery with a blend of traditional and modern
+                    designs. Each piece is crafted with precision, timeless beauty and contemporary style. Ideal for any
+                    occasion, this collection combines sophistication with the enduring quality of sterling silver.</p>
+            </div>
+            <div class="box">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\17269143131.jfif" alt="Image 3">
+                <div class="image-label">ANKA COLLECTION</div>
+                <p>The Anka Collection features elegant 14-karat diamond jewellery, expertly crafted to merge timeless
+                    elegance with contemporary design. The collection includes a range of styles, from classic
+                    solitaires to
+                    intricate designs, making it ideal for adding a touch of luxury and refinement to any occasion.</p>
+            </div>
+        </div>
+    </section>
+
+    <h1>Top Categories</h1>
+    <img src="C:\Users\win3\Desktop\imp of html old wd,dss\hr.png" alt="" srcset="">
+    <div class="gallery-container">
+        <div class="large-image-left">
+            <img src="C:\Users\win3\Desktop\imp of html old wd,dss\1724307889.jpg" alt="Large Image Left" class="large-image">
+        </div>
+        <div class="center-thumbnails">
+            <div class="thumbnail-row">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\small top 1.jpg" alt="Top Left Thumbnail">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\small top 2.jpg" alt="Top Right Thumbnail">
+            </div>
+            <div class="thumbnail-row">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\small bom 1.jpg" alt="Bottom Left Thumbnail">
+                <img src="C:\Users\win3\Desktop\imp of html old wd,dss\small bom 2.jpg" alt="Bottom Right Thumbnail">
+            </div>
+        </div>
+        <div class="large-image-right">
+            <img src="C:\Users\win3\Desktop\imp of html old wd,dss\1724308414.jpg" alt="Large Image Right" class="large-image">
+        </div>
+    </div>
+
+    <h1>Diamond Jewellery</h1>
+    <img src="C:\Users\win3\Desktop\imp of html old wd,dss\hr.png" alt="" srcset="">
+    <div class="image-gallery">
+        <img src="n1.jpg" alt="Image 1">
+        <img src="n2.jpg" alt="Image 2">
+        <img src="n3.jpg" alt="Image 3">
+        <img src="n4.webp" alt="Image 4">
+    </div>
+
+    <h1>Kids Section</h1>
+    <img src="C:\Users\win3\Desktop\imp of html old wd,dss\hr.png" alt="" srcset="">
+    <div class="image-gallery">
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\1n1.jpg" alt="Image 1">
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\2n2.jpg" alt="Image 2">
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\3n3.jpg" alt="Image 3">
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\4n4.jpg" alt="Image 4">
+    </div>
+
+    <h1>Gifting & More</h1>
+    <img src="C:\Users\win3\Desktop\imp of html old wd,dss\hr.png" alt="" srcset="">
+    <div class="image-gallery">
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\gn1.webp" alt="Image 1">
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\gn2.jpg" alt="Image 2">
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\gn3.jpg" alt="Image 3">
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\gn4.jpg" alt="Image 4">
+    </div>
+    <h1>Statistics</h1>
+    <img src="C:\Users\win3\Desktop\imp of html old wd,dss\hr.png" alt="" srcset="">
+
+
+    <div class="medals-container">
+        <div class="medal-container">
+            <div class="medal-inner">
+                <div class="statistic-value" id="value1">1927</div>
+                <div class="statistic-label">ESTABLISHED</div>
+            </div>
+        </div>
+        <div class="medal-container">
+            <div class="medal-inner">
+                <div class="statistic-value" id="value2">40000+</div>
+                <div class="statistic-label">JEWELRY DESIGNS</div>
+            </div>
+        </div>
+        <div class="medal-container">
+            <div class="medal-inner">
+                <div class="statistic-value" id="value3">130+
+                </div>
+                <div class="statistic-label">EMPLOYEES</div>
+            </div>
+        </div>
+        <div class="medal-container">
+            <div class="medal-inner">
+                <div class="statistic-value" id="value4">100000+
+                </div>
+                <div class="statistic-label">CUSTOMERS</div>
+            </div>
+        </div>
+    </div>
+
+    <h1>Affiliations</h1>
+    <img src="C:\Users\win3\Desktop\imp of html old wd,dss\hr.png" alt="" srcset="">
+    <div class="image-gallery">
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\download.png" alt="Image 1">
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\unnamed.jpg" alt="Image 2">
+        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\IBJA_logo.png" alt="Image 3">
+    </div>
+
+    <!-- footer  html
+
+    <footer>
+
+
+        <footer>
+
+
+            <div class="footer-container">
+                <div>
+                    <img src="C:\Users\win3\Desktop\imp of html old wd,dss\Govind Dande - Coin Logo.png" alt="" width="200px" height="100px">
+                    <p>Dande Gold And Diamonds are one of the most <br>“PREMIUM BRAND” in Nashik & North Maharashtra.
+                    </p>
+                </div>
+
+                <div class="footer-section links">
+                    <h2>quick links</h2>
+                    <nav>
+                        <div>
+                            <a href="file:///C:/Users/My%20Pc/Desktop/Message%20Sender/dfgtyuiop.html"> Home</a>
+                            <br>
+                            <a href="#"> Shop </a><br>
+                            <br>
+                            <a href="file:///C:/Users/My%20Pc/Desktop/Message%20Sender/main-html.html#"> Loyalty
+                            </a><br>
+                            <br>
+                            <a href="file:///C:/Users/My%20Pc/Desktop/Message%20Sender/vido.htm#"> museum</a><br>
+                            <br>
+                            <a href="#"> Saving Scheme</a><br>
+                            <br>
+                            <a href="#"> About Us </a><br>
+                            <br>
+                            <a href="#"> Careers</a><br>
+                            <br>
+                            <a href="#"> Terms & Conditions</a><br>
+                            <br>
+                            <a href="#">Privacy Policy</a><br>
+                            <br>
+                        </div>
+                    </nav>
+                </div>
+                <div class="footer-section app-links">
+                    <h2>Track loyalty points,<br> Unlock benefits<br> – Download Our App!</h2>
+                    <div class="app-store-logos">
+
+                        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\app (1).png" alt="Apple App Store">
+
+                        <br>
+
+                        <img src="C:\Users\win3\Desktop\imp of html old wd,dss\play.png" alt="Google Play Store">
+
+
+
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                </div>
+
+                <div class="footer-section contact">
+                    <h2>get in touch</h2>
+                    <p><i class="fas fa-map-marker-alt"></i> 123, मुख्य मार्ग, शहर, राज्य, देश</p>
+                    <p><i class="fas fa-phone"></i> +91 12345 67890</p>
+                    <p><i class="fas fa-envelope"></i> info@yourcompany.com</p>
+
+                </div>
+
+
+
+
+                <div class="">
+                    <img src="C:\Users\win3\Desktop\imp of html old wd,dss\mobile.png" alt="" srcset="">
+                </div>
+            </div>
+        </footer>
+
+        <div class="orange">Govind Dande & Sons Pvt Ltds © 2025 All Rights Reserved.
+        </div>
+        footer html end -->
+
+        <script>
+            const sliderContainer = document.querySelector('.image-slider-container');
+            const slider = document.querySelector('.image-slider');
+            const images = slider.querySelectorAll('img');
+            const imageCount = images.length;
+            let currentIndex = 0;
+
+            function slide() {
+                const translateX = -currentIndex * 100 + '%';
+                slider.style.transform = `translateX(${translateX})`;
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % imageCount;
+                slide();
+            }
+
+            setInterval(nextSlide, 5000); // Change image every 5 seconds
+
+            slide(); // Initial slide
+
+        </script>
+</body>
+
+</html>

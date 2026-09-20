@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preloader Example</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Fullscreen Preloader Container */
+    #loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    /* Circular SVG Loader */
+    .loader-circle {
+      position: relative;
+      width: 120px;
+      height: 120px;
+    }
+
+    .loader-circle svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg); /* Start progress from the top */
+    }
+
+    .loader-circle circle {
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* Background Circle Track */
+    .bg-circle {
+      stroke: #e6e6e6;
+    }
+
+    /* Animated Blue Progress Line */
+    .progress-circle {
+      stroke: #1877f2;
+      stroke-dasharray: 314; /* 2 * PI * r (approx. 2 * 3.14159 * 50) */
+      stroke-dashoffset: 314; /* Start fully hidden */
+      stroke-linecap: round;
+      transition: stroke-dashoffset 0.05s linear;
+    }
+
+    /* Centered Percentage Text */
+    .counter-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 22px;
+      font-weight: bold;
+      color: #1877f2;
+    }
+
+    /* Hide Loader Class */
+    #loader-wrapper.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* Main Content (Hidden initially until loader completes) */
+    #main-content {
+      padding: 50px 20px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    #main-content.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader HTML -->
+  <div id="loader-wrapper">
+    <div class="loader-circle">
+      <svg viewBox="0 0 110 110">
+        <!-- Gray Background Circle -->
+        <circle class="bg-circle" cx="55" cy="55" r="50"></circle>
+        <!-- Blue Animated Circle -->
+        <circle class="progress-circle" id="progress-circle" cx="55" cy="55" r="50"></circle>
+      </svg>
+      <!-- Number Counter -->
+      <div class="counter-text" id="counter">0</div>
+    </div>
+  </div>
+
+  <!-- Your Main Page Content -->
+  <main id="main-content">
+    <h1>Welcome to the Main Website!</h1>
+    <p>The page content has loaded successfully after the preloader reached 100%.</p>
+  </main>
+
+  <!-- JavaScript Code -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const counterElement = document.getElementById("counter");
+      const progressCircle = document.getElementById("progress-circle");
+      const loaderWrapper = document.getElementById("loader-wrapper");
+      const mainContent = document.getElementById("main-content");
+
+      const totalDash = 314; // Circle perimeter
+      let currentCount = 0;
+      const targetCount = 100;
+      const duration = 3000; // Time in milliseconds (3 seconds)
+      const intervalTime = duration / targetCount;
+
+      const timer = setInterval(() => {
+        currentCount++;
+        
+        // Update number text
+        counterElement.textContent = currentCount;
+
+        // Update circular blue stroke progress
+        const offset = totalDash - (totalDash * currentCount) / 100;
+        progressCircle.style.strokeDashoffset = offset;
+
+        // When counter reaches 100
+        if (currentCount >= targetCount) {
+          clearInterval(timer);
+
+          // Wait 200ms at 100%, then hide loader and show page content
+          setTimeout(() => {
+            loaderWrapper.classList.add("fade-out");
+            mainContent.classList.add("show");
+          }, 200);
+        }
+      }, intervalTime);
+    });
+  </script>
+</body>
+</html>

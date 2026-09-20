@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shree Siddhi Vinayak Hospitals</title>
+
+<style>
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   TOP HEADER
+========================= */
+
+.top-header {
+    width: 100%;
+    height: 140px;
+    background: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-inner {
+    width: 1140px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.logo {
+    width: 350px;
+    height: auto;
+}
+
+
+
+
+/* =========================
+   RIGHT CONTACT BOX
+========================= */
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.enquiry-box {
+    width: 272px;
+    height: 110px;
+
+    border: 1px solid #ddd;
+    border-radius: 15px 0 0 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-left: 30px;
+}
+
+.enquiry-title {
+    color: #00577e;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+.phone {
+    color: #111;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.appointment {
+    width: 265px;
+    height: 110px;
+
+    background: #005b80;
+    color: white;
+
+    border-radius: 0 15px 15px 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-left: 30px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.appointment:hover {
+    background: #004663;
+}
+
+.book {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.appointment-text {
+    font-size: 31px;
+    font-weight: 300;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+    width: 100%;
+    height: 51px;
+
+    background: #fff;
+
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+    z-index: 1000;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.nav-container {
+    width: 1075px;
+    height: 100%;
+}
+
+.nav-menu {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    list-style: none;
+}
+
+.nav-item {
+    height: 100%;
+    position: relative;
+}
+
+.nav-link {
+    height: 100%;
+
+    padding: 0 15px;
+
+    display: flex;
+    align-items: center;
+
+    color: #555;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 400;
+
+    white-space: nowrap;
+
+    border-top: 3px solid transparent;
+
+    transition: all 0.25s ease;
+}
+
+
+/* ACTIVE HOME */
+
+.nav-item.active .nav-link {
+    color: #006b94;
+    background: #f2f3f4;
+
+    border-top: 3px solid #006b94;
+}
+
+
+/* HOVER */
+
+.nav-link:hover {
+    color: #006b94;
+    background: #f5f6f7;
+}
+
+
+/* =========================
+   ARROW
+========================= */
+
+.arrow {
+    width: 7px;
+    height: 7px;
+
+    margin-left: 8px;
+    margin-top: -4px;
+
+    border-right: 1px solid #555;
+    border-bottom: 1px solid #555;
+
+    transform: rotate(45deg);
+}
+
+
+/* =========================
+   DROPDOWN
+========================= */
+
+.dropdown {
+    position: absolute;
+
+    top: 51px;
+    left: 0;
+
+    min-width: 210px;
+
+    background: white;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.18);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(8px);
+
+    transition: 0.25s ease;
+}
+
+.nav-item:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+.dropdown a {
+    display: block;
+
+    padding: 13px 17px;
+
+    color: #555;
+    text-decoration: none;
+
+    font-size: 13px;
+
+    border-bottom: 1px solid #eee;
+
+    transition: 0.2s;
+}
+
+.dropdown a:hover {
+    color: #006b94;
+    background: #f5f6f7;
+
+    padding-left: 23px;
+}
+
+
+/* =========================
+   LOGIN PORTAL
+========================= */
+
+.login-item .nav-link {
+    color: #006b94;
+    font-weight: 600;
+}
+
+.login-item .nav-link:hover {
+    background: #006b94;
+    color: white;
+}
+
+
+/* =========================
+   HERO SLIDER
+========================= */
+
+.slider {
+    width: 100%;
+    height: 450px;
+
+    position: relative;
+    overflow: hidden;
+
+    background: #ddd;
+}
+
+.slide {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+
+    background-size: cover;
+    background-position: center;
+
+    transition: opacity 1s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+
+/* =========================
+   PLACEHOLDER HERO IMAGES
+========================= */
+
+.slide:nth-child(1) {
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.55),
+            rgba(255,255,255,0.55)
+        ),
+        url("hospital-1.jpg");
+}
+
+.slide:nth-child(2) {
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.45),
+            rgba(255,255,255,0.45)
+        ),
+        url("hospital-2.jpg");
+}
+
+.slide:nth-child(3) {
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.45),
+            rgba(255,255,255,0.45)
+        ),
+        url("hospital-3.jpg");
+}
+
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.slide-content {
+    position: absolute;
+
+    left: 52.5%;
+    top: 43%;
+
+    transform: translateY(-50%);
+
+    opacity: 0;
+
+    animation: textIn 1s forwards;
+}
+
+.slide.active .slide-content {
+    animation: textIn 1s forwards;
+}
+
+.slide-content h1 {
+    font-size: 36px;
+    line-height: 1.18;
+
+    color: #050505;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+@keyframes textIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   THREE COLOR LINE
+========================= */
+
+.color-line {
+    margin-top: 13px;
+
+    width: 275px;
+    height: 5px;
+
+    display: flex;
+}
+
+.color-line span:nth-child(1) {
+    width: 33.33%;
+    background: #176f43;
+}
+
+.color-line span:nth-child(2) {
+    width: 33.33%;
+    background: #0074a8;
+}
+
+.color-line span:nth-child(3) {
+    width: 33.33%;
+    background: #b45a2b;
+}
+
+
+/* =========================
+   SLIDER ARROWS
+========================= */
+
+.slider-btn {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 41px;
+    height: 41px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(40,40,40,0.65);
+
+    color: white;
+
+    font-size: 30px;
+
+    line-height: 35px;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition: 0.3s;
+}
+
+.slider-btn:hover {
+    background: #005b80;
+}
+
+.prev {
+    left: 30px;
+}
+
+.next {
+    right: 30px;
+}
+
+
+/* =========================
+   TRANSLATE BUTTON
+========================= */
+
+.translate {
+    position: fixed;
+
+    bottom: 0;
+    left: 20px;
+
+    width: 125px;
+    height: 40px;
+
+    background: #c47a00;
+
+    color: white;
+
+    border: none;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 2000;
+
+    transition: 0.3s;
+}
+
+.translate:hover {
+    background: #a96500;
+}
+
+
+/* =========================
+   MOBILE MENU BUTTON
+========================= */
+
+.menu-toggle {
+    display: none;
+
+    background: transparent;
+
+    border: none;
+
+    font-size: 27px;
+
+    color: #006b94;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+    .header-inner {
+        width: 95%;
+    }
+
+    .nav-container {
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 0 9px;
+        font-size: 11px;
+    }
+
+    .logo {
+        width: 180px;
+    }
+
+    .nabh-logo {
+        width: 120px;
+    }
+
+    .enquiry-box {
+        width: 230px;
+    }
+
+    .appointment {
+        width: 220px;
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .top-header {
+        height: auto;
+        padding: 15px;
+    }
+
+    .header-inner {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .navbar {
+        height: 55px;
+        justify-content: flex-end;
+        padding: 0 20px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: absolute;
+
+        top: 55px;
+        left: 0;
+
+        width: 100%;
+        height: auto;
+
+        background: white;
+
+        display: none;
+
+        flex-direction: column;
+
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .nav-item {
+        width: 100%;
+        height: auto;
+    }
+
+    .nav-link {
+        width: 100%;
+        height: 48px;
+
+        padding: 0 25px;
+
+        border-top: 1px solid #eee;
+    }
+
+    .dropdown {
+        position: static;
+
+        width: 100%;
+
+        display: none;
+
+        opacity: 1;
+        visibility: visible;
+
+        transform: none;
+
+        box-shadow: none;
+    }
+
+    .nav-item.dropdown-open .dropdown {
+        display: block;
+    }
+
+    .dropdown a {
+        padding-left: 45px;
+        background: #f6f7f8;
+    }
+
+    .slider {
+        height: 380px;
+    }
+
+    .slide-content {
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 80%;
+    }
+
+    .slide-content h1 {
+        font-size: 30px;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .logo-area {
+        flex-direction: column;
+    }
+
+    .header-right {
+        flex-direction: column;
+    }
+
+    .enquiry-box,
+    .appointment {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .appointment {
+        margin-top: 5px;
+    }
+
+    .slider {
+        height: 350px;
+    }
+
+    .slide-content {
+        left: 50%;
+        width: 85%;
+    }
+
+    .slide-content h1 {
+        font-size: 26px;
+    }
+
+    .color-line {
+        width: 220px;
+    }
+
+    .prev {
+        left: 15px;
+    }
+
+    .next {
+        right: 15px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="top-header">
+
+    <div class="header-inner">
+
+
+        <!-- LOGO -->
+
+        <div class="logo-area">
+
+            <!-- Replace with your logo -->
+            <img
+                src="https://ssvmshospitals.com/wp-content/uploads/2021/10/ssvmshnabh120.png"
+                class="logo"
+                alt="Shree Siddhi Vinayak Hospitals">
+
+            <!-- Replace with NABH image -->
+           
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div class="header-right">
+
+            <div class="enquiry-box">
+
+                <div class="enquiry-title">
+                    GENERAL ENQUIRIES
+                </div>
+
+                <div class="phone">
+                    07422-490333
+                </div>
+
+            </div>
+
+
+            <div
+                class="appointment"
+                onclick="openAppointment()">
+
+                <div class="book">
+                    BOOK AN
+                </div>
+
+                <div class="appointment-text">
+                    Appointment
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <button
+            class="menu-toggle"
+            id="menuToggle">
+
+            ☰
+
+        </button>
+
+
+        <ul class="nav-menu" id="navMenu">
+
+
+            <!-- HOME -->
+
+            <li class="nav-item active">
+
+                <a href="#" class="nav-link">
+                    HOME
+                </a>
+
+            </li>
+
+
+            <!-- ABOUT -->
+
+            <li class="nav-item">
+
+                <a href="#about" class="nav-link">
+                    ABOUT
+                </a>
+
+            </li>
+
+
+            <!-- DEPARTMENTS -->
+
+            <li class="nav-item has-dropdown">
+
+                <a href="#" class="nav-link">
+
+                    DEPARTMENTS
+
+                    <span class="arrow"></span>
+
+                </a>
+
+                <div class="dropdown">
+
+                    <a href="#">
+                        Cardiology
+                    </a>
+
+                    <a href="#">
+                        Neurology
+                    </a>
+
+                    <a href="#">
+                        Orthopedics
+                    </a>
+
+                    <a href="#">
+                        Pediatrics
+                    </a>
+
+                </div>
+
+            </li>
+
+
+            <!-- SERVICES -->
+
+            <li class="nav-item">
+
+                <a href="#" class="nav-link">
+                    SERVICES
+                </a>
+
+            </li>
+
+
+            <!-- SPECIALISTS -->
+
+            <li class="nav-item">
+
+                <a href="#" class="nav-link">
+                    SPECIALISTS
+                </a>
+
+            </li>
+
+
+            <!-- PATIENTS -->
+
+            <li class="nav-item has-dropdown">
+
+                <a href="#" class="nav-link">
+
+                    PATIENTS &amp; VISITORS CORNER
+
+                    <span class="arrow"></span>
+
+                </a>
+
+                <div class="dropdown">
+
+                    <a href="#">
+                        Patient Information
+                    </a>
+
+                    <a href="#">
+                        Visiting Hours
+                    </a>
+
+                    <a href="#">
+                        Emergency
+                    </a>
+
+                    <a href="#">
+                        Insurance
+                    </a>
+
+                </div>
+
+            </li>
+
+
+            <!-- NEWS -->
+
+            <li class="nav-item">
+
+                <a href="#" class="nav-link">
+                    NEWS &amp; EVENTS
+                </a>
+
+            </li>
+
+
+            <!-- CAREER -->
+
+            <li class="nav-item">
+
+                <a href="#" class="nav-link">
+                    CAREER
+                </a>
+
+            </li>
+
+
+            <!-- CONTACT -->
+
+            <li class="nav-item">
+
+                <a href="#" class="nav-link">
+                    CONTACT US
+                </a>
+
+            </li>
+
+
+            <!-- LOGIN PORTAL -->
+
+            <li class="nav-item login-item">
+
+                <a href="login.html" class="nav-link">
+                    LOGIN PORTAL
+                </a>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO SLIDER
+========================= -->
+
+<section class="slider" id="slider">
+
+
+    <!-- SLIDE 1 -->
+
+    <div class="slide active">
+
+        <div class="slide-content">
+
+            <h1>
+                YOUR HEALTH<br>
+                IS OUR MISSION
+            </h1>
+
+            <div class="color-line">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SLIDE 2 -->
+
+    <div class="slide">
+
+        <div class="slide-content">
+
+            <h1>
+                QUALITY CARE<br>
+                FOR YOUR FAMILY
+            </h1>
+
+            <div class="color-line">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SLIDE 3 -->
+
+    <div class="slide">
+
+        <div class="slide-content">
+
+            <h1>
+                ADVANCED CARE<br>
+                TRUSTED DOCTORS
+            </h1>
+
+            <div class="color-line">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PREVIOUS -->
+
+    <button
+        class="slider-btn prev"
+        id="prev">
+
+        ‹
+
+    </button>
+
+
+    <!-- NEXT -->
+
+    <button
+        class="slider-btn next"
+        id="next">
+
+        ›
+
+    </button>
+
+
+</section>
+
+
+
+<!-- =========================
+     TRANSLATE BUTTON
+========================= -->
+
+<button
+    class="translate"
+    onclick="translatePage()">
+
+    Translate ➤
+
+</button>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const navMenu =
+    document.getElementById("navMenu");
+
+
+menuToggle.addEventListener("click", function() {
+
+    navMenu.classList.toggle("show");
+
+});
+
+
+/* =========================
+   ACTIVE NAVIGATION
+========================= */
+
+const navLinks =
+    document.querySelectorAll(".nav-link");
+
+
+navLinks.forEach(function(link) {
+
+    link.addEventListener("click", function(event) {
+
+        const parent =
+            this.parentElement;
+
+
+        /* Mobile dropdown */
+
+        if (
+            parent.classList.contains("has-dropdown") &&
+            window.innerWidth <= 850
+        ) {
+
+            event.preventDefault();
+
+            parent.classList.toggle(
+                "dropdown-open"
+            );
+
+            return;
+        }
+
+
+        navLinks.forEach(function(item) {
+
+            item.parentElement.classList.remove(
+                "active"
+            );
+
+        });
+
+
+        parent.classList.add("active");
+
+    });
+
+});
+
+
+/* =========================
+   SLIDER
+========================= */
+
+const slides =
+    document.querySelectorAll(".slide");
+
+let currentSlide = 0;
+
+
+function showSlide(index) {
+
+    slides.forEach(function(slide) {
+
+        slide.classList.remove("active");
+
+    });
+
+
+    slides[index].classList.add("active");
+
+}
+
+
+function nextSlide() {
+
+    currentSlide++;
+
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
+
+    showSlide(currentSlide);
+
+}
+
+
+function previousSlide() {
+
+    currentSlide--;
+
+    if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+    }
+
+    showSlide(currentSlide);
+
+}
+
+
+/* NEXT BUTTON */
+
+document
+    .getElementById("next")
+    .addEventListener(
+        "click",
+        nextSlide
+    );
+
+
+/* PREVIOUS BUTTON */
+
+document
+    .getElementById("prev")
+    .addEventListener(
+        "click",
+        previousSlide
+    );
+
+
+/* AUTO SLIDER */
+
+setInterval(function() {
+
+    nextSlide();
+
+}, 5000);
+
+
+/* =========================
+   APPOINTMENT
+========================= */
+
+function openAppointment() {
+
+    window.location.href =
+        "appointment.html";
+
+}
+
+
+/* =========================
+   TRANSLATE
+========================= */
+
+function translatePage() {
+
+    alert(
+        "Translation option clicked!"
+    );
+
+}
+
+
+/* =========================
+   RESIZE
+========================= */
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        if (window.innerWidth > 850) {
+
+            navMenu.classList.remove("show");
+
+            document
+                .querySelectorAll(".dropdown-open")
+                .forEach(function(item) {
+
+                    item.classList.remove(
+                        "dropdown-open"
+                    );
+
+                });
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

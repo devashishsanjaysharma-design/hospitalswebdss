@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Fixed: Font Awesome CDN updated to v6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .floating-widget-container {
+            position: fixed;
+            right: 0;
+            top: 25%;
+            display: flex;
+            align-items: flex-start;
+            z-index: 1000;
+            font-family: sans-serif;
+        }
+
+        .widget-tabs {
+            display: flex;
+            flex-direction: column;
+            box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .tab-label-red {
+            background: #c47a00;
+            color: #ffffff;
+            padding: 14px 16px;
+            font-weight: bold;
+            font-size: 18px;
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tab-label-red i {
+            color: #ffffff;
+        }
+
+        .enquiry-form-popup {
+            background: #c47a00;
+            color: #ffffff;
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
+            width: 300px; 
+            padding: 20px;
+            text-align: center;
+            box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+            transform: translateX(100%);
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            right: 100%;
+            top: 0;
+        }
+
+        .floating-widget-container.active .enquiry-form-popup {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Styles for popup elements */
+        .popup-title {
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .popup-description {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .popup-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            background-color: #ffffff;
+            color: #c47a00;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .popup-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .translate {
+            position: fixed;
+            bottom: 0;
+            left: 20px;
+            width: 125px;
+            height: 40px;
+            background: #c47a00;
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2000;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-widget-container" id="floatingWidget">
+        <div class="enquiry-form-popup">
+            <h2 class="popup-title">What is your position?</h2>
+            <p class="popup-description">Please select your current role or position.</p>
+            <button class="popup-button" onclick="window.location.href='https://www.example.com/doctor'">Doctor</button>
+            <button class="popup-button" onclick="window.location.href='https://www.example.com/nurse'">Nurse</button>
+            <button class="popup-button" onclick="window.location.href='https://www.example.com/administrator'">Administrator</button>
+            <button class="popup-button" onclick="window.location.href='https://www.example.com/other'">Other</button>
+        </div>
+        <div class="widget-tabs" id="widgetToggle">
+            <div class="tab-label-red"><i class="fa-solid fa-user"></i></div>
+        </div>
+    </div>
+
+    <script>
+        const floatingWidget = document.getElementById('floatingWidget');
+        const widgetToggle = document.getElementById('widgetToggle');
+
+        widgetToggle.addEventListener('click', () => {
+            floatingWidget.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
